@@ -6,10 +6,13 @@ abstract class Employee2 {//추상 클래스
 	public abstract void calcSalary();		//추상 메소드
 	public abstract void calcBonus();
 	
-//	public Employee2(String name, int salary) {
-//		this.name = name;
-//		this.salary = salary;
-//	}
+
+	public Employee2() {};
+	
+	public Employee2(String name, int salary) {	//생성자가 있으면 기본생성자가 자동생성이 안되므로 기본도 만들어준다.
+		this.name = name;
+		this.salary = salary;
+	}
 }
 
 // calcBonus() 매서드를 구현 X -> abstract class로 변경
@@ -19,10 +22,12 @@ abstract class Salesman extends Employee2 {	//307페이지 하단 밑에서 두�
 		System.out.println("Salesman 급여 = 기본급+판매수당*판매량");
 	}
 	
-//	public Salesman(String name, int salary, int salesQty) {
-//		super(name, salary);
-//		this.salesQty = salesQty;
-//	}
+	public Salesman() {};
+	
+	public Salesman(String name, int salary, int salesQty) {	
+		super(name, salary);
+		this.salesQty = salesQty;
+	}
 	
 }
 
@@ -35,17 +40,12 @@ class DomesticSalesman extends Salesman {
 //		System.out.println("DomesticSalesman 급여 = 기본급+판매수당*판매량");
 //	}
 
-//	public DomesticSalesman(String name, int salary, int qty, int dqty) {
-//		super(name, salary, qty);
-//		this.domesticSalesQty = dqty;
-//	}
-//	
-//	public DomesticSalesman(String name, int salary, int qty, int dqty) {
-//		this.name = name;
-//		this.salary = salary;
-//		this.salesQty = qty;
-//		this.domesticSalesQty = dqty;
-//	}
+	public DomesticSalesman() {};
+	
+	public DomesticSalesman(String name, int salary, int qty, int dqty) {
+		super(name, salary, qty);
+		this.domesticSalesQty = dqty;
+	}
 	
 	public void calcBonus() {
 		System.out.println("DomesticSalesman 보너스 = 기본급* 0.01");
@@ -55,6 +55,13 @@ class DomesticSalesman extends Salesman {
 
 class Consultant extends Employee2 {
 	int consultingHours;
+	
+	public Consultant() {};
+	
+	public Consultant(int consultingHours) {
+		super();
+		this.consultingHours = consultingHours;
+	}
 	public void calcSalary() {
 		System.out.println("Consultant 급여 = 기본급+컨설팅단가 * 컨설팅 시간");
 	}
@@ -65,6 +72,13 @@ class Consultant extends Employee2 {
 
 class Manager extends Employee2 {
 	int teamNumbers;
+	
+	public Manager() {};
+	
+	public Manager(int teamNumbers) {
+		super();
+		this.teamNumbers = teamNumbers;
+	}
 	public void calcSalary() {
 		System.out.println("Manager 급여 = 기본급+관리자단가 * 팀수");
 	}
@@ -77,12 +91,13 @@ public class HRSTest {
 
 	public static void main(String[] args) {
 		//Salesman s = new Salesman();			//추상 클래스라서 호출 불가. (매서드 완성이 아직 안됨)
-		Salesman s = new DomesticSalesman();
+		Employee2 s = new DomesticSalesman();
 		//Employee2 e = new DomesticSalesman();			// 매서드가 모두 완성된 자식 클래스로 호출할 수 있음.
-		//DomesticSalesman d = new DomesticSalesman();	// 자식 클래스라서 호출 가능.
+		DomesticSalesman s2 = new DomesticSalesman();	// 자식 클래스라서 호출 가능.
 		Consultant c = new Consultant();
 		Manager m = new Manager();
 		s.calcSalary();
+		s2.calcSalary();
 		c.calcSalary();
 		m.calcSalary();
 		s.calcBonus();
