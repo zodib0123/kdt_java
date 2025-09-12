@@ -3,7 +3,8 @@ package com.ruby.java.ch08;
  *  inner class: 359페이지 밑에서 두번째, 마지막 문단 이해
  */
 class MyLinkedList {
-	private Node head=null;
+	private Node head = null;
+	public MyLinkedList() {}
 	
 	private class Node {
 		private String data;

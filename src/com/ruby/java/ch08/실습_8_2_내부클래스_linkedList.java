@@ -84,7 +84,7 @@ class LinkedList {
 				p = p.link;
 			}
 			// 연결 리스트에서 삭제할 노드를 찾지 못하면 메시지 출력
-			System.out.println("삭제할 데이터가 없읍니다.");
+			System.out.println("삭제할 데이터가 없습니다.");
 		}
 	}
 }

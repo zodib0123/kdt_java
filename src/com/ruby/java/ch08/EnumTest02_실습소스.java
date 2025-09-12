@@ -47,18 +47,20 @@ public class EnumTest02_실습소스 {
 	static Mandarin selectMenu() {//자료구조에서 자주 사용이므로 학습 필요 
 		int key;
 		do {
-		for (Mandarin m : Mandarin.values()) {//Mandarin m[] = Mandarin.values();와 의미가 같다 
-			System.out.print(m.ordinal()+ ".");
-			System.out.println(" " + m + "(" + m.getPrice()+ ")");
-		}
-		System.out.println("선택: ");
-		key = stdIn.nextInt();
+			for (Mandarin m : Mandarin.values()) {// Mandarin m[] = Mandarin.values();와 의미가 같다
+				System.out.print(m.ordinal() + ".");
+				System.out.println(" " + m + "(" + m.getPrice() + ")");
+			}
+			System.out.println("선택: ");
+			key = stdIn.nextInt();
 		} while(key < Mandarin.금귤.ordinal() || key > Mandarin.황금향.ordinal());
 		
 		return Mandarin.MandarinAt(key);
 	}
 
 	public static void main(String[] args) {
+		//Scanner stdIn = new Scanner(System.in);
+		
 		System.out.println("시작::");
 		Mandarin m;//생성자를 호출하지 않는다
 		//Mandarin m2 = new Mandarin(100);//생성자를 호출할 수 없다 - 주의점 
