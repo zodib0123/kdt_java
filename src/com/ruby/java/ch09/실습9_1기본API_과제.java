@@ -88,6 +88,14 @@ class Library {
 	}
 
 	public void printBooks(String msg) {
+		System.out.println(msg);
+		for (Book book : books) {
+			if (book != null) {
+				System.out.println(String.format("도서명:\t%s\t저자:\t%s\t출판연도:\t%d\tISBN:\t%s", book.getTitle(), book.getAuthor(), book.getPublicationYear(), book.getISBN()));
+			} else {
+				break;
+			}		
+		}
 
 	}
 
@@ -151,7 +159,7 @@ public class 실습9_1기본API_과제 {
 		if (foundBook == null)
 			System.out.println("\n자바 책이 없다");
 		else 
-			System.out.println("\n도서명으로 검색한 도서" + foundBook.toString());
+			System.out.println("\n도서명으로 검색한 도서\n" + foundBook.toString());
 		
 	}
 }
