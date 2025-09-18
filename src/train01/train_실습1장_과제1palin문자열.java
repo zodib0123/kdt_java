@@ -10,6 +10,18 @@ package train01;
  */
 public class train_실습1장_과제1palin문자열 {
 
+	private static boolean isPalindrome(String s) {
+		// TODO Auto-generated method stub
+		boolean result = true;
+		int len = s.length();
+		for (int i = 0; i < len/2; i++) {
+			if (s.charAt(i) != s.charAt((len-1)-i)) {
+				result = false;
+			}
+		}
+		return result;
+	}
+	
 	public static void main(String[] args) {
 		// 테스트 케이스로 사용할 예제 문자열들
 		String[] testStrings = { "racecar", // 팰린드롬
@@ -26,17 +38,5 @@ public class train_실습1장_과제1palin문자열 {
 			System.out.println(s + " -> " + (isPalindrome(s) ? "팰린드롬" : "팰린드롬 아님"));
 		}
 
-	}
-
-	public static boolean isPalindrome(String s) {
-		// TODO Auto-generated method stub
-		boolean result = true;
-		int len = s.length();
-		for (int i = 0; i < len/2; i++) {
-			if (s.charAt(i) != s.charAt((len-1)-i)) {
-				result = false;
-			}
-		}
-		return result;
 	}
 }

@@ -13,9 +13,11 @@ package train01;
 */
 public class train_실습1장_과제2문자열압축 {
 
-	public static String compress(String input) {
+	private static String compress(String input) {
 		// TODO Auto-generated method stub
-				
+		if (input == null || input.isEmpty()) {
+			return input;
+		}
 		StringBuilder st = new StringBuilder();
 		int count = 1;
         for (int i = 0; i < input.length(); i++) {
@@ -27,7 +29,6 @@ public class train_실습1장_과제2문자열압축 {
                 count = 1;
             }
         }
-		
 		return st.toString();
 	}
 	
