@@ -1,5 +1,4 @@
 package train02;
-//소수, 최대공약수, 최소공배수 코딩 이해 필요 
 
 /*
  * 어떤 정수를 나누어 떨어지게 만드는 수를 약수(divisor)
@@ -13,12 +12,9 @@ package train02;
  * 2는 약수가 두 개(1과 자기 자신)뿐이므로 소수이며, 유일한 짝수 소수
  */
 public class train_실습2_7소수나열 {
+
     // 0 이상 n 이하의 소수 개수를 반환하는 함수
-    private static int primeCount(int n, int []data) {
-    	if (data == null) {
-    		return 0;
-    	}
-    	
+    static int primeCount(int n, int []data) {
         if (n < 2) return 0; // 0과 1은 소수가 아님
         int count = 0;
         int j = 0;
@@ -32,7 +28,12 @@ public class train_실습2_7소수나열 {
     }
 
     // 소수 판별 함수
-    private static boolean isPrime(int num) {
+    /*
+     * 48의 약수는 1, 2, 3, 4, 6, 8, 12, 16, 24, 48
+     * i * i <= 48 조건을 만족하려면 i는 6까지 실행하면 충분
+     * i <= (48 % i)를 만족하는 것은 6까지이다 
+     */
+    static boolean isPrime(int num) {
         if (num < 2) return false;
         for (int i = 2; i * i <= num; i++) {
             if (num % i == 0) return false;
@@ -67,6 +68,9 @@ public class train_실습2_7소수나열 {
         return (a * b) / gcd(a, b); // LCM 공식: (a * b) / GCD(a, b)
     }
     public static void main(String[] args) {
+    	for (int i = 0; i < 15; i++) {
+    		System.out.println(i + " = " + (isPrime(i)?"소수":"소수가 아니다"));
+    	}
     	int[] primeArr = new int[100];
         for (int i = 0; i <= 10; i++) {
         	int num = primeCount(i, primeArr);

@@ -57,7 +57,7 @@ class PhyscData2 implements Comparable<PhyscData2>{
 }
 public class train_실습2_14_1객체배열정렬 {
 
-	public static void showData(String str, PhyscData2[] data) {
+	private static void showData(String str, PhyscData2[] data) {
 		// TODO Auto-generated method stub
 		if (str == null || str.isEmpty() || data == null) {
 			return;
@@ -68,35 +68,73 @@ public class train_실습2_14_1객체배열정렬 {
 		}
 		
 	}
-	
-	public static void sortData(PhyscData2[] data) {
+
+	private static void swap(PhyscData2[] data, int i, int j) {
+		// TODO Auto-generated method stub
+		PhyscData2 temp = data[i];
+		data[i] = data[j];
+		data[j] = temp;
+	}
+
+	private static void sortData(PhyscData2[] data) {
 		// TODO Auto-generated method stub
 		if (data == null) {
 			return;
 		}
-		Arrays.sort(data);
+		
+		for (int i = 0; i < data.length; i++) {
+			for (int j = i+1; j < data.length; j++) {
+				if (data[i].compareTo(data[j]) > 0) {
+					swap(data, i, j);
+				}
+			}
+		}
 	}
 
-	public static int binarySearch(PhyscData2[] data, String str) {
+	private static int binarySearch(PhyscData2[] data, String str) {
 		// TODO Auto-generated method stub
 		if (str == null || str.isEmpty() || data == null) {
 			return 0;
 		}
-		int count = -1;
-		for (PhyscData2 dt : data) {
-			if (dt.getName().equals(str)) {
-				count++;
+		int result = -1;
+		int start = 0;
+		int end = data.length - 1;
+		
+		while(start <= end) {
+			int temp = (start + end) / 2;
+			if (data[temp].getName().compareTo(str) == 0) {
+				result = temp;
+				break;
+			} else if (data[temp].getName().compareTo(str) > 0) {
+				end = temp;
+			} else {
+				start = temp + 1;
 			}
 		}
-		return count;
+		
+		return result;
 	}
 	
-	public static PhyscData2[] insertObject(PhyscData2[] data, PhyscData2 pData) {
+	private static PhyscData2[] insertObject(PhyscData2[] data, PhyscData2 pData) {
 		// TODO Auto-generated method stub
 		if (data == null || pData == null) {
 			return data;
 		}
-		return null;
+		PhyscData2[] newData = new PhyscData2[data.length + 1];
+		
+		for (int i = 0; i < newData.length; i++) {
+			if (i < newData.length - 1 && data[i].getName().compareTo(pData.getName()) < 0) {
+				newData[i] = data[i];
+			} else {
+				newData[i] = pData;
+				for (int j = i; j < data.length; j++) {
+					newData[j+1] = data[j];
+				}
+				break;
+			}
+		}
+				
+		return newData;
 	}
 	
 	public static void main(String[] args) {
@@ -113,7 +151,7 @@ public class train_실습2_14_1객체배열정렬 {
 		sortData(data);
 		showData("정렬후", data);
 
-		Arrays.sort(data);//comparator가 필요하다 
+		Arrays.sort(data);//compareTo()가 필요하다 
 		showData("Arrays.sort() 실행후", data);
 
 		int resultIndex = binarySearch(data, "이길동");
@@ -121,10 +159,11 @@ public class train_실습2_14_1객체배열정렬 {
 			System.out.println("사이다가 존재하면 인덱스 = "+resultIndex);
 		else
 			System.out.println("사이다가 존재하지 않는다");
+
 		
-//		PhyscData2[] newData= insertObject(data, new PhyscData2("소주다", 179, 1.5));
-//		//배열의 사이즈를 1개 증가시킨후 insert되는 객체 보다 큰 값들은 우측으로 이동, 사이즈가 증가된 객체 배열을 리턴
-//		showData("삽입후", newData);
+		PhyscData2[] newData= insertObject(data, new PhyscData2("소주다", 179, 1.5));
+		//배열의 사이즈를 1개 증가시킨후 insert되는 객체 보다 큰 값들은 우측으로 이동, 사이즈가 증가된 객체 배열을 리턴
+		showData("삽입후", newData);
 	}
 
 }

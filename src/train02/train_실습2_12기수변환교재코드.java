@@ -5,20 +5,20 @@ package train02;
 import java.util.Scanner;
 
 public class train_실습2_12기수변환교재코드 {
-//--- 정숫값 x를 r진수로 변환하여 배열 d에 아랫자리부터 넣어 두고 자릿수를 반환 ---//
-	static int cardConv(int x, int r, char[] d) {
+//--- 정숫값 decimal를 radix진수로 변환하여 배열 toNumber에 아랫자리부터 넣어 두고 자릿수를 반환 ---//
+	static int cardConv(int decimal, int radix, char[] toNumber) {
 		int digits = 0; // 변환 뒤 자릿수
 		String dchar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 		do {
-			d[digits++] = dchar.charAt(x % r); // r로 나눈 나머지를 저장
-			x /= r;
-		} while (x != 0);
+			toNumber[digits++] = dchar.charAt(decimal % radix); // r로 나눈 나머지를 저장
+			decimal /= radix;
+		} while (decimal != 0);
 
 		for (int i = 0; i < digits / 2; i++) { // 배열 d의 숫자 문자열을 역순 정렬
-			char t = d[i];
-			d[i] = d[digits - i - 1];
-			d[digits - i - 1] = t;
+			char t = toNumber[i];
+			toNumber[i] = toNumber[digits - i - 1];
+			toNumber[digits - i - 1] = t;
 		}
 
 		return digits;

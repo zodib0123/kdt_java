@@ -128,7 +128,7 @@ public class train_실습2_6다차원배열 {
 		showData("행렬 C", C);
 
 		int [][]F = transposeMatrix(B);
-		System.out.println("F[3][2] = ");
+		System.out.println("F[4][3] = ");
 		showData("행렬 F", F);
 		C= multiplyMatrixTransposed(A,F);
 		showData("행렬 곱셈 결과-전치행렬 사용", C);
